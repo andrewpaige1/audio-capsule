@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='header.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+<title>audio capsule</title>
+    </head>
+
+
+    <body>
+        <script>
+
+        function showCloseButton() {
+            var x = document.getElementById("close");
+            if (x.style.display === "none") {
+                x.style.display = "inline-block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function close() {
+            var x = document.getElementById("close");
+            if (x.style.display === "inline-block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "inline-block";
+            }
+        }
+
+
+        function changeClass(){
+            var NAME = document.getElementById("nav");
+            var currentClass = NAME.className;
+            if (currentClass == "nav") { // Check the current class name
+                NAME.className = "open";   // Set other class name
+                showCloseButton()
+            } else if(currentClass == "open") {
+                NAME.className = "open";   // Set other class name
+                showCloseButton()
+            } else {
+                 NAME.className = "nav";  // Otherwise, use `second_name`
+            }
+        }   
+
+        function closeMenu(){
+            var NAME = document.getElementById("nav");
+            var currentClass = NAME.className;
+            if (currentClass == "open") { // Check the current class name
+                NAME.className = "nav";   // Set other class name
+                close()
+            } else {
+                 NAME.className = "open";  // Otherwise, use `second_name`
+            }
+        }   
+
+        </script>
+
+
+        <div>
+            
+            <div style="background-color: turquoise;" class="header">
+              <div class="headerLogo">
+                <a class="navBtn" href="{{ url_for('index') }}">
+                    Home
+                </a>
+            </div>
+                <div class="headerNav">
+                    <div id="nav" class="nav">
+                        <button class="closeButton" style="display: none;" id="close" onclick="closeMenu()">Close</button>
+                        <a class="navBtn" href="">new upload</a>
+                        <a class="navBtn navBtnOutline" href="">profile</a>
+                </div>
+                <button class="hamButton" onclick="changeClass()">Menu</button>
+            </div>
+            
+            <div class="headerBodySpacer"></div>
+
+        </div>
+
+
+
+<br/>
+
+
+
+
+
+    {% block body %}
+    {% endblock %}
+
+
+    </body>
+</html>

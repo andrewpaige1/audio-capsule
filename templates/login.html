@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+
+        <title>audio capsule</title>
+    </head>
+  <div class="container">
+  <div class="level">
+      <div class="column">
+        <div class="level-item">
+          <h1 class="is-size-1">audio capsule</h1>
+      </div>
+      <div class="level-item">
+          <h2 class="is-size-3">login</h2>
+      </div>
+
+        <div class="level-item">
+          <form method=POST action="{{ url_for('login') }}">
+              <div class="field">
+                  <label>Username</label>
+                  <input type="text" class="input" name="username" placeholder="Username">
+              </div>
+
+              <div class="field">
+                  <label>Password</label>
+                  <input type="password" class="input" name="pass" placeholder="Password">
+              </div>
+              
+              <button type="submit" class="button is-primary">Log In</button>
+          </form>
+        </div>
+          <br>
+          <div class="level-item">
+              Don't have an account?&nbsp<a href="{{ url_for('register') }}">Sign up here</a>.
+          </div>
+      </div>
+  </div>
+</div>
