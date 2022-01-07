@@ -1,3 +1,2 @@
-#audio capsule
-no more saving multiple files on your computer!
-save edits to music files with audio-capsule
+<h1>audio-capsule</h1> <br>
+Save edit history of music files with audio capsule!
