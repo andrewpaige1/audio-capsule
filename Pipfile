@@ -10,6 +10,8 @@ python-dotenv = "*"
 bcrypt = "*"
 dnspython = "*"
 flask-sqlalchemy = "*"
+gunicorn = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

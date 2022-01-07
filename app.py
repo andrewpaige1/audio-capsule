@@ -9,9 +9,10 @@ import bcrypt
 
 
 app = Flask(__name__)
-app.secret_key = "shhh"
+app.secret_key = environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///sqlite3.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URL').replace("://", "ql://", 1)
+#"sqlite:///sqlite3.db"
 #environ.get('DATABASE_URL').replace("://", "ql://", 1)
 db = SQLAlchemy(app)
 
