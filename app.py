@@ -42,7 +42,7 @@ class Files(db.Model):
 @app.route('/')
 def index():
   if 'username' in session:
-    return render_template("index.html")
+    return redirect(url_for('profile'))
   return redirect(url_for('register'))
 
 
@@ -118,6 +118,14 @@ def upload():
     print("File uploaded succesfully")
     return redirect(url_for('index'))
   return redirect(url_for('register'))
+
+@app.route('/profile')
+def profile():
+    if 'username' in session:
+        user = User.query.filter_by(username=session['username']).first()
+        uploads = user.uploads
+        return render_template('profile.html', uploads=uploads)
+    return redirect(url_for('register'))
 
 if __name__ == '__main__':
   app.run(debug=True)

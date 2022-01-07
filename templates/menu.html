@@ -58,6 +58,34 @@
             }
         }   
 
+
+      window.onload = function() {
+        var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+      }
+
         </script>
 
 
@@ -72,8 +100,9 @@
                 <div class="headerNav">
                     <div id="nav" class="nav">
                         <button class="closeButton" style="display: none;" id="close" onclick="closeMenu()">Close</button>
-                        <a class="navBtn" href="">new upload</a>
-                        <a class="navBtn navBtnOutline" href="">profile</a>
+                        <a class="navBtn" id="myBtn">new upload</a>
+
+                        <a class="navBtn navBtnOutline" href="{{url_for('profile')}}">profile</a>
                 </div>
                 <button class="hamButton" onclick="changeClass()">Menu</button>
             </div>
@@ -87,7 +116,31 @@
 <br/>
 
 
+<div id="myModal" class="modal">
 
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+        <div class="file">
+            <label class="file-label">
+              <input class="file-input" type=file name="audio">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
+          </div>
+        <input type="text" class="input" name="note" placeholder="Enter a note about this file">
+        <button type="submit" class="tealBtn">submit</button>
+    </form>
+    </div>
+    </div>
+  
 
 
     {% block body %}
